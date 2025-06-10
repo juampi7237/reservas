@@ -3,7 +3,7 @@
 ## Estructura del Proyecto
 
 El proyecto está aplicando **arquitectura hexagonal** para realizar un
-- **Backend**: API REST desarrollada con Spring Boot 
+- **Backend**: API REST desarrollada con Spring Boot
 
 
 ## 🚀 Backend (Spring Boot)
@@ -15,9 +15,9 @@ El proyecto está aplicando **arquitectura hexagonal** para realizar un
 
 ### Configuración inicial
 
-1. Clonar el repositorio: https://github.com/juampi7237/backend
+1. Clonar el repositorio: https://github.com/juampi7237/reservas
    ```bash
-   git clone git@github.com:juampi7237/backend.git
+   git clone git@github.com:juampi7237/reservas.git
 
 ### Configurar la base de datos:
 
