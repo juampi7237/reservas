@@ -44,7 +44,7 @@ Si usas diferente puerto para MySQL: jdbc:mysql://localhost:<tu_puerto>/clinica.
 Si quieres cambiar el puerto de la aplicación, añade: server.port=<puerto_deseado>
 
 ### Ejecución del proyecto
-Ejecutar la clase principal ClinicaApplication.java
+Ejecutar la clase principal ReservasApplication.java
 
 El frontend se levantará en el puerto **8080** por defecto.
 
