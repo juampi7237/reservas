@@ -14,34 +14,36 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserRepositoryImpl implements UserRepositoryPort {
 
-    private final UserRepository userRepository;
-
-
-    @Override
-    public User save(User user) {
-        UserEntity userEntity = new UserEntity(user.getId(),user.getName(),user.getEmail(),user.getPhone(),user.isAdmin(),user.getRegisterDate(),null,null);
-        UserEntity savedUser = userRepository.save(userEntity);
-        return new User(savedUser.getName(), savedUser.getEmail(), savedUser.getPhone());
-    }
+    private final JpaUserRepository userRepository;
 
     @Override
-    public Optional<User> findById(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<User> findByEmail(String email) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         return UserMapper.toDomainList(userRepository.findAll());
     }
 
     @Override
-    public void deleteById(Long id) {
+    public User save(User user) {
+        UserEntity entity = UserMapper.toEntity(user);
+        return UserMapper.toDomain(userRepository.save(entity));
+    }
 
+    @Override
+    public Optional<User> findById(Long id) {
+        UserEntity user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        return Optional.ofNullable(UserMapper.toDomain(user));
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        UserEntity user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Email not found"));
+        return Optional.ofNullable(UserMapper.toDomain(user));
+    }
+
+
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
     @Override

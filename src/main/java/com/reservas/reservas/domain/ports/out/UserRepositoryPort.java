@@ -10,7 +10,7 @@ public interface UserRepositoryPort {
     User save(User user);
     Optional<User> findById(Long id);
     Optional<User> findByEmail(String email);
-    List<User> findAll();
+    List<User> getAll();
     void deleteById(Long id);
     User update(Long id,User user);
 }
