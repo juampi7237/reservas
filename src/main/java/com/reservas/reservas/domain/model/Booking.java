@@ -12,8 +12,7 @@ public class Booking {
     private BookingStatus bookingStatus;
     private LocalDateTime creationDate;
 
-    public Booking(Long id, Long userId, Long spaceId, LocalDateTime startTime, LocalDateTime endTime, String observaciones, LocalDateTime creationDate) {
-
+    public Booking(Long id, Long userId, Long spaceId, LocalDateTime startTime, LocalDateTime endTime, String observaciones, LocalDateTime creationDate,BookingStatus bookingStatus) {
         this.id = id;
         this.userId = userId;
         this.spaceId = spaceId;
@@ -21,7 +20,7 @@ public class Booking {
         this.endTime = endTime;
         this.observaciones = observaciones;
         this.creationDate = creationDate;
-        this.bookingStatus = BookingStatus.PENDIENTE;
+        this.bookingStatus = bookingStatus;
     }
 
     public Long getId() {
