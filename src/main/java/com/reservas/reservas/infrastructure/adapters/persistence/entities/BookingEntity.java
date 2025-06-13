@@ -2,6 +2,7 @@ package com.reservas.reservas.infrastructure.adapters.persistence.entities;
 
 import com.reservas.reservas.domain.model.BookingStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,21 @@ public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "La fecha y hora de inicio es obligatoria")
     private LocalDateTime startTime;
+
+    @NotNull(message = "La fecha y hora de fin es obligatoria")
     private LocalDateTime endTime;
+
+    @Size(max = 500, message = "Las observaciones no deben superar los 500 caracteres")
     private String observaciones;
+
+    @NotNull(message = "El estado de la reserva es obligatorio")
     @Enumerated(EnumType.STRING)
     private BookingStatus bookingStatus;
+
+    @PastOrPresent(message = "La fecha de creación no puede ser futura")
     private LocalDateTime creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -18,6 +18,7 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class BookingRepositoryImpl implements BookingRepositoryPort {
+
     private final JpaBookingRepository jpaBookingRepository;
     private final JpaUserRepository jpaUserRepository;
     private final JpaSpaceRepository jpaSpaceRepository;
@@ -26,9 +27,6 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
     public Booking save(Booking booking) {
         UserEntity user = jpaUserRepository.findById(booking.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + booking.getUserId()));
-        SpaceEntity space = jpaSpaceRepository.findById(booking.getUserId())
-                .orElseThrow(() -> new RuntimeException("Space not found with id: " + booking.getUserId()));
-        BookingEntity bookingEntity = BookingMapper.toEntity(booking,user,space);
 
         SpaceEntity space = jpaSpaceRepository.findById(booking.getSpaceId())
                 .orElseThrow(() -> new RuntimeException("Space not found with id: " + booking.getSpaceId()));
@@ -37,7 +35,6 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
 
         BookingEntity bookingEntity = BookingMapper.toEntity(booking, user, space);
         bookingEntity.setCreationDate(LocalDateTime.now());
-        return BookingMapper.toDomain(jpaBookingRepository.save(bookingEntity));
 
         bookingEntity = jpaBookingRepository.save(bookingEntity);
 
@@ -77,10 +74,12 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
         BookingEntity booking = jpaBookingRepository.findById(id).orElseThrow(() -> new RuntimeException("Booking not found"));
         return Optional.ofNullable(BookingMapper.toDomain(booking));
     }
+
     @Override
     public List<Booking> getAll() {
         return BookingMapper.toDomainList(jpaBookingRepository.findAll());
     }
+
     @Override
     public void deleteById(Long id) {
         jpaBookingRepository.deleteById(id);
