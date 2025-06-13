@@ -4,9 +4,8 @@ import com.reservas.reservas.domain.model.Space;
 import com.reservas.reservas.domain.model.User;
 import com.reservas.reservas.domain.ports.out.SpaceRepositoryPort;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.SpaceEntity;
-import com.reservas.reservas.infrastructure.adapters.persistence.entities.UserEntity;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaSpaceRepository;
 import com.reservas.reservas.infrastructure.mappers.SpaceMapper;
-import com.reservas.reservas.infrastructure.mappers.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

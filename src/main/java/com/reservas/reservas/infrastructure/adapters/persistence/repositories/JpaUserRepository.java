@@ -1,4 +1,4 @@
-package com.reservas.reservas.infrastructure.adapters.persistence;
+package com.reservas.reservas.infrastructure.adapters.persistence.repositories;
 
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
