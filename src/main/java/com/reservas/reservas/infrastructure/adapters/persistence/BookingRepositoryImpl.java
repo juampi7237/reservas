@@ -1,6 +1,7 @@
 package com.reservas.reservas.infrastructure.adapters.persistence;
 
 import com.reservas.reservas.domain.model.Booking;
+import com.reservas.reservas.domain.model.SpaceType;
 import com.reservas.reservas.domain.ports.out.BookingRepositoryPort;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.BookingEntity;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.NotificationEntity;
@@ -11,6 +12,7 @@ import com.reservas.reservas.infrastructure.mappers.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -83,5 +85,20 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
     @Override
     public void deleteById(Long id) {
         jpaBookingRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Booking> getBookingsByDate(LocalDate date) {
+        return BookingMapper.toDomainList(jpaBookingRepository.findBookingsByDate(date));
+    }
+
+    @Override
+    public List<Booking> getBookingsBySpaceType(String spaceType) {
+        return BookingMapper.toDomainList(jpaBookingRepository.findBySpace_Type(SpaceType.valueOf(spaceType)));
+    }
+
+    @Override
+    public List<Booking> getBookingsByDateRange(LocalDate startDate, LocalDate endDate) {
+        return BookingMapper.toDomainList(jpaBookingRepository.findBookingsByDateRange(startDate.atStartOfDay(), endDate.atStartOfDay()));
     }
 }
