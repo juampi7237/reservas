@@ -7,7 +7,17 @@ import com.reservas.reservas.infrastructure.adapters.persistence.entities.Notifi
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.SpaceEntity;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.UserEntity;
 import com.reservas.reservas.infrastructure.mappers.BookingMapper;
-@@ -21,15 +22,51 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
+import com.reservas.reservas.infrastructure.mappers.UserMapper;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+@AllArgsConstructor
+public class BookingRepositoryImpl implements BookingRepositoryPort {
     private final JpaBookingRepository jpaBookingRepository;
     private final JpaUserRepository jpaUserRepository;
     private final JpaSpaceRepository jpaSpaceRepository;
