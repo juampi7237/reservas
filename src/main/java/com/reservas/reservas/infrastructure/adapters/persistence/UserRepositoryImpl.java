@@ -3,6 +3,7 @@ package com.reservas.reservas.infrastructure.adapters.persistence;
 import com.reservas.reservas.domain.model.User;
 import com.reservas.reservas.domain.ports.out.UserRepositoryPort;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.UserEntity;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaUserRepository;
 import com.reservas.reservas.infrastructure.mappers.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;

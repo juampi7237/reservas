@@ -3,6 +3,7 @@ package com.reservas.reservas.infrastructure.adapters.persistence;
 import com.reservas.reservas.domain.model.Notification;
 import com.reservas.reservas.domain.ports.out.NotificationRepositoryPort;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.NotificationEntity;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaNotificationRepository;
 import com.reservas.reservas.infrastructure.mappers.NotificationMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;

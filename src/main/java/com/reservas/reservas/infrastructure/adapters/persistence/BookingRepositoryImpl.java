@@ -7,8 +7,11 @@ import com.reservas.reservas.infrastructure.adapters.persistence.entities.Bookin
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.NotificationEntity;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.SpaceEntity;
 import com.reservas.reservas.infrastructure.adapters.persistence.entities.UserEntity;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaBookingRepository;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaNotificationRepository;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaSpaceRepository;
+import com.reservas.reservas.infrastructure.adapters.persistence.repositories.JpaUserRepository;
 import com.reservas.reservas.infrastructure.mappers.BookingMapper;
-import com.reservas.reservas.infrastructure.mappers.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +27,7 @@ public class BookingRepositoryImpl implements BookingRepositoryPort {
     private final JpaBookingRepository jpaBookingRepository;
     private final JpaUserRepository jpaUserRepository;
     private final JpaSpaceRepository jpaSpaceRepository;
-    private final  JpaNotificationRepository jpaNotificationRepository;
+    private final JpaNotificationRepository jpaNotificationRepository;
     @Override
     public Booking save(Booking booking) {
         UserEntity user = jpaUserRepository.findById(booking.getUserId())
