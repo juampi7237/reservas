@@ -1,11 +1,13 @@
 package com.reservas.reservas.application.services;
 
 import com.reservas.reservas.domain.model.Booking;
+import com.reservas.reservas.domain.model.SpaceType;
 import com.reservas.reservas.domain.ports.in.BookingUseCase;
 import com.reservas.reservas.domain.ports.out.BookingRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,5 +43,20 @@ public class BookingService implements BookingUseCase {
     @Override
     public void deleteBooking(Long id) {
         bookingRepositoryPort.deleteById(id);
+    }
+
+    @Override
+    public List<Booking> getBookingsByDate(LocalDate date) {
+        return bookingRepositoryPort.getBookingsByDate(date);
+    }
+
+    @Override
+    public List<Booking> getBookingsBySpaceType(String spaceType) {
+        return bookingRepositoryPort.getBookingsBySpaceType(spaceType);
+    }
+
+    @Override
+    public List<Booking> getBookingsByDateRange(LocalDate startDate, LocalDate endDate) {
+        return bookingRepositoryPort.getBookingsByDateRange(startDate,endDate);
     }
 }
